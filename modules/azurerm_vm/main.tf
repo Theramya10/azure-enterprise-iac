@@ -1,8 +1,8 @@
 data "azurerm_subnet" "subnet" {
-  for_each            = var.vms
-  name                = each.value.subnet_name
+  for_each             = var.vms
+  name                 = each.value.subnet_name
   virtual_network_name = each.value.vnet_name
-  resource_group_name = each.value.resource_group_name
+  resource_group_name  = each.value.resource_group_name
 }
 
 data "azurerm_public_ip" "rosie" {
@@ -15,21 +15,21 @@ data "azurerm_key_vault" "keyvault" {
   for_each            = var.keyvault
   name                = each.value.name
   resource_group_name = each.value.resource_group_name
-  
+
 }
 
 data "azurerm_key_vault_secret" "username" {
-  for_each            = var.vms
-  name                = "vm-admin-username"
+  for_each     = var.vms
+  name         = "vm-admin-username"
   key_vault_id = data.azurerm_key_vault.keyvault[each.value.keyvault].id
-  
+
 }
 
 data "azurerm_key_vault_secret" "password" {
-  for_each            = var.vms
-  name                = "vm-admin-password"
+  for_each     = var.vms
+  name         = "vm-admin-password"
   key_vault_id = data.azurerm_key_vault.keyvault[each.value.keyvault].id
-  
+
 }
 
 data "azurerm_network_interface" "nic" {
@@ -48,8 +48,8 @@ resource "azurerm_linux_virtual_machine" "myvm" {
   resource_group_name             = each.value.resource_group_name
   location                        = each.value.location
   size                            = each.value.size
-  admin_username = data.azurerm_key_vault_secret.username[each.key].value
-  admin_password = data.azurerm_key_vault_secret.password[each.key].value
+  admin_username                  = data.azurerm_key_vault_secret.username[each.key].value
+  admin_password                  = data.azurerm_key_vault_secret.password[each.key].value
   disable_password_authentication = false
   network_interface_ids           = [data.azurerm_network_interface.nic[each.key].id]
 
