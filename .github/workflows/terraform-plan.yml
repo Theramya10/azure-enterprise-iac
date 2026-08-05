@@ -11,7 +11,7 @@ permissions:
 
 env:
   TF_VERSION: "1.14.7"
-  TF_WORKING_DIR: "./Dev"
+  TF_WORKING_DIR: "./environments/Dev"
 
   ARM_USE_OIDC: true
   ARM_CLIENT_ID: ${{ vars.ARM_CLIENT_ID }}
