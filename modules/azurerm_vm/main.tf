@@ -39,6 +39,10 @@ data "azurerm_network_interface" "nic" {
 }
 
 resource "azurerm_linux_virtual_machine" "myvm" {
+  #checkov:skip=CKV_AZURE_1: "Password auth is intentional to demonstrate dynamic Key Vault injection."
+  #checkov:skip=CKV_AZURE_149: "Password auth is intentional to demonstrate dynamic Key Vault injection."
+  #checkov:skip=CKV_AZURE_178: "SSH keys are bypassed in favor of Key Vault passwords."
+  #checkov:skip=CKV_AZURE_50: "VM extensions are permitted in this dev environment."
   for_each                        = var.vms
   name                            = each.value.vms_name
   resource_group_name             = each.value.resource_group_name

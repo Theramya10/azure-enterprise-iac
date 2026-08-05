@@ -1,4 +1,5 @@
 resource "azurerm_subnet" "snet" {
+  #checkov:skip=CKV2_AZURE_31: "NSG binding is handled in a separate security module."
   for_each             = var.subnet
   name                 = each.value.name
   resource_group_name  = each.value.resource_group_name

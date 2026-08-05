@@ -7,14 +7,16 @@ resource "azurerm_key_vault" "kv" {
   name                = each.value.name
   location            = each.value.location
   resource_group_name = each.value.resource_group_name
-
   tenant_id = data.azurerm_client_config.current.tenant_id
   sku_name  = each.value.sku_name
-
   purge_protection_enabled   = each.value.purge_protection_enabled
   soft_delete_retention_days = each.value.soft_delete_retention_days
-
   rbac_authorization_enabled = each.value.enable_rbac_authorization
+  public_network_access_enabled = false
+  network_acls {
+    default_action = "Deny"
+    bypass         = "AzureServices"
+  }
 }
 
 resource "azurerm_role_assignment" "kv_secrets_officer" {
@@ -44,6 +46,8 @@ resource "azurerm_key_vault_secret" "vm_username" {
   name         = "vm-admin-username"
   value        = each.value.admin_username
   key_vault_id = azurerm_key_vault.kv[each.key].id
+  content_type    = "text/plain"
+  expiration_date = "2027-12-31T00:00:00Z"
 }
 
 resource "azurerm_key_vault_secret" "vm_password" {
@@ -55,4 +59,6 @@ resource "azurerm_key_vault_secret" "vm_password" {
   name         = "vm-admin-password"
   value        = random_password.vm_password[each.key].result
   key_vault_id = azurerm_key_vault.kv[each.key].id
+  content_type    = "text/plain"
+  expiration_date = "2027-12-31T00:00:00Z"
 }
