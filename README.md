@@ -1,5 +1,11 @@
 [![Terraform CI](https://github.com/Theramya10/azure-enterprise-iac/actions/workflows/terraform-ci.yml/badge.svg)](https://github.com/Theramya10/azure-enterprise-iac/actions/workflows/terraform-ci.yml)
 
+[![Terraform Plan](https://github.com/Theramya10/azure-enterprise-iac/actions/workflows/terraform-plan.yml/badge.svg)](https://github.com/Theramya10/azure-enterprise-iac/actions/workflows/terraform-plan.yml)
+
+[![Terraform Deployment](https://github.com/Theramya10/azure-enterprise-iac/actions/workflows/terraform-deploy.yml/badge.svg)](https://github.com/Theramya10/azure-enterprise-iac/actions/workflows/terraform-deploy.yml)
+
+
+
 # azure-enterprise-iac
 "Enterprise-grade Infrastructure as Code (IaC) blueprint for Azure. Features modular Terraform architecture, automated CI/CD pipelines, and strict RBAC security."
 # 🚀 Azure Enterprise Infrastructure Blueprint
