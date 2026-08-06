@@ -1,7 +1,5 @@
 [![Terraform CI](https://github.com/Theramya10/azure-enterprise-iac/actions/workflows/terraform-ci.yml/badge.svg)](https://github.com/Theramya10/azure-enterprise-iac/actions/workflows/terraform-ci.yml)
 
-[![Terraform Plan](https://github.com/Theramya10/azure-enterprise-iac/actions/workflows/terraform-plan.yml/badge.svg)](https://github.com/Theramya10/azure-enterprise-iac/actions/workflows/terraform-plan.yml)
-
 [![Terraform Deployment](https://github.com/Theramya10/azure-enterprise-iac/actions/workflows/terraform-deploy.yml/badge.svg)](https://github.com/Theramya10/azure-enterprise-iac/actions/workflows/terraform-deploy.yml)
 
 
