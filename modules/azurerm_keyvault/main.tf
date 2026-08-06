@@ -1,7 +1,7 @@
 data "azurerm_client_config" "current" {}
 
 resource "azurerm_key_vault" "kv" {
-
+#checkov:skip=CKV2_AZURE_32: "Private endpoint will be implemented in a future PR."
   for_each = var.az_kv
 
   name                = each.value.name
