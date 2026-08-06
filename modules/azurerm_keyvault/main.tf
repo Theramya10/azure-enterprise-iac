@@ -12,9 +12,9 @@ resource "azurerm_key_vault" "kv" {
   purge_protection_enabled   = each.value.purge_protection_enabled
   soft_delete_retention_days = each.value.soft_delete_retention_days
   rbac_authorization_enabled = each.value.enable_rbac_authorization
-  public_network_access_enabled = false
+  public_network_access_enabled = true
   network_acls {
-    default_action = "Deny"
+    default_action = "Allow"
     bypass         = "AzureServices"
   }
 }
